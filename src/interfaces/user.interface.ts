@@ -1,4 +1,4 @@
-import { MongooseDocument } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface IUser {
     fullName: string;
@@ -7,6 +7,6 @@ export interface IUser {
     password: string;
 }
 
-export interface IUserModel extends MongooseDocument, IUser {
+export interface IUserModel extends IUser, Document {
     comparePassport: (password: string) => Promise<boolean>;
 }
