@@ -1,6 +1,6 @@
 import * as argon2 from 'argon2';
-import { IUserModel } from 'interfaces/user.interface';
-import { Model, model as MongooseModel, Schema } from 'mongoose';
+import { IUserModel } from '@interfaces/user.interface';
+import { Model, model, Schema } from 'mongoose';
 import { isEmail } from 'validator';
 
 const UserSchema = new Schema({
@@ -53,4 +53,4 @@ class UserModel extends Model {
 }
 
 UserSchema.loadClass(UserModel);
-export const User = MongooseModel<IUserModel>('User', UserSchema);
+export const User = model<IUserModel>('User', UserSchema);

@@ -1,6 +1,6 @@
-import {Schema} from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-const UserSchema = new Schema({
+const PostSchema = new Schema({
     title: {
         type: String,
         required: [true, 'Title is required'],
@@ -9,23 +9,10 @@ const UserSchema = new Schema({
         type: String,
         required: [true, 'Description is required'],
     },
-    userId: { type: Schema.ObjectId, ref: "Post"},
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 });
 
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-        if (err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
-};
-
-export const User = mongoose.model('User', UserSchema);
-
-export interface IUser {
-    fullName: string;
-    userName: string;
-    email: string;
-    password: string;
-}
+export const Post = model('Post', PostSchema);
