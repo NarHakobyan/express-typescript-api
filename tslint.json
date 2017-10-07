@@ -1,0 +1,21 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "quotemark": [true, "single"],
+        "ordered-imports": false,
+        "object-literal-sort-keys": false,
+        "no-trailing-whitespace": false,
+        "member-ordering": [true, {"order": [
+            "static-field",
+            "instance-field",
+            "constructor",
+            "static-method",
+            "instance-method"
+        ]}]
+    },
+    "rulesDirectory": []
+}
