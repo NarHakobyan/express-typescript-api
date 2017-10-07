@@ -1,21 +1,39 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "types": ["reflect-metadata"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "experimentalDecorators":true,
-    "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "declaration": false,
-    "baseUrl": "./",
-    "paths": {
-      "common/*": ["src/common/*"],
-      "interfaces/*": ["src/interfaces/*"]
-    }
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "types": [
+            "reflect-metadata"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "declaration": false,
+        "baseUrl": "./",
+        "paths": {
+            "@common/*": [
+                "./src/common/*"
+            ],
+            "@interfaces/*": [
+                "./src/interfaces/*"
+            ],
+            "@models/*": [
+                "./src/models/*"
+            ],
+            "@services/*": [
+                "./src/services/*"
+            ]
+        },
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

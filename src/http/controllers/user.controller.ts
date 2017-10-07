@@ -1,38 +1,32 @@
-import { Controller, Get, OnInit } from 'ts-express-decorators';
+import { isValidObjectId } from '@common/helpers';
+import { User } from '@models/User';
 import * as Express from 'express';
-
-export interface IUser {
-    _id: string;
-    name: string;
-}
+import { Authenticated, Controller, Get, PathParams, Post, Status } from 'ts-express-decorators';
 
 @Controller('/users')
-export class UserController implements OnInit {
-    public $onInit(): Promise<any> | void {
-        console.log('$onInit');
-    }
-
-    /**
-     * Example of classic call. Use `@Get` for routing a request to your method.
-     * In this case, this route "/calendars/:id" are mounted on the "rest/" path.
-     *
-     * By default, the response is sent with status 200 and is serialized in JSON.
-     *
-     * @param request
-     * @param response
-     * @returns {{id: any, name: string}}
-     */
-    @Get('/:id')
-    public async get(request: Express.Request, response: Express.Response) {
-        return {id: request.params.id, name: 'test'};
-    }
-
+export class UserController {
+    
     @Get('/')
-    public async allUsers(request: Express.Request, response: Express.Response) {
-        console.log(request);
-        return [{id: '1', name: 'test'}];
+    @Authenticated()
+    public async getAllUsers(request: Express.Request, response: Express.Response) {
+        return User.find();
     }
-
+    
+    @Get('/:id')
+    public async getSingleUser(@PathParams('id') id: number) {
+        if (isValidObjectId(id)) {
+            return User.findById(id);
+        } else {
+            return 0;
+        }
+    }
+    
+    @Post('/')
+    @Status(201)
+    public async addUser(req: Express.Request, res: Express.Response) {
+        return User.create(req.body);
+    }
+    
     /*@Post('/')
     @Authenticated()
     public async post(@Required() @BodyParams('calendar') calendar: Calendar): Promise<ICalendar> {

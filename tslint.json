@@ -5,17 +5,14 @@
     ],
     "jsRules": {},
     "rules": {
-        "quotemark": [true, "single"],
+        "quotemark": [
+            true,
+            "single"
+        ],
         "ordered-imports": false,
         "object-literal-sort-keys": false,
         "no-trailing-whitespace": false,
-        "member-ordering": [true, {"order": [
-            "static-field",
-            "instance-field",
-            "constructor",
-            "static-method",
-            "instance-method"
-        ]}]
+        "member-ordering": false
     },
     "rulesDirectory": []
 }
