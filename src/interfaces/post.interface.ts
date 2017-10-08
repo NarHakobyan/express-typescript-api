@@ -1,12 +1,11 @@
-import { MongooseDocument } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 
-export interface IUser {
-    fullName: string;
-    userName: string;
-    email: string;
-    password: string;
+export interface IPost {
+    title: string;
+    description: string;
+    userId: Schema.Types.ObjectId;
 }
 
-export interface IUserModel extends MongooseDocument, IUser {
-    comparePassport: (password: string) => Promise<boolean>;
+export interface IPostModel extends Document, IPost {
+
 }

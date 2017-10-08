@@ -1,3 +1,4 @@
+import { IPostModel } from '@interfaces/post.interface';
 import { model, Schema } from 'mongoose';
 
 const PostSchema = new Schema({
@@ -15,4 +16,4 @@ const PostSchema = new Schema({
     },
 });
 
-export const Post = model('Post', PostSchema);
+export const Post = model<IPostModel>('Post', PostSchema);
